@@ -824,15 +824,18 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
         return Center(
           child: Padding(
             padding: modalConfig.confirmMargin ?? const EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: FlatButton.icon(
+            child: TextButton.icon(
+              style: TextButton.styleFrom(
+                backgroundColor: modalConfig.confirmBrightness == Brightness.dark
+                    ? modalConfig.confirmColor ?? Colors.blueGrey
+                    : null,
+                textStyle: TextStyle(color: modalConfig.confirmBrightness == Brightness.light
+                    ? modalConfig.confirmColor
+                    : Colors.white
+                )
+              ),
               icon: modalConfig.confirmIcon,
               label: modalConfig.confirmLabel,
-              color: modalConfig.confirmBrightness == Brightness.dark
-                ? modalConfig.confirmColor ?? Colors.blueGrey
-                : null,
-              textColor: modalConfig.confirmBrightness == Brightness.light
-                ? modalConfig.confirmColor
-                : Colors.white,
               onPressed: onPressed,
             ),
           ),
@@ -841,14 +844,17 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
         return Center(
           child: Padding(
             padding: modalConfig.confirmMargin ?? const EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: FlatButton(
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  backgroundColor: modalConfig.confirmBrightness == Brightness.dark
+                      ? modalConfig.confirmColor ?? Colors.blueGrey
+                      : null,
+                  textStyle: TextStyle(color: modalConfig.confirmBrightness == Brightness.light
+                      ? modalConfig.confirmColor
+                      : Colors.white,
+                  )
+              ),
               child: modalConfig.confirmLabel,
-              color: modalConfig.confirmBrightness == Brightness.dark
-                ? modalConfig.confirmColor ?? Colors.blueGrey
-                : null,
-              textColor: modalConfig.confirmBrightness == Brightness.light
-                ? modalConfig.confirmColor
-                : Colors.white,
               onPressed: onPressed,
             ),
           ),
